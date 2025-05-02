@@ -1,7 +1,7 @@
 import google_drive as gd
 import os
 import configparser
-
+import json
 from flask import Flask, abort, jsonify, request
 
 app = Flask(__name__)
@@ -25,7 +25,8 @@ def query_products():
 
 @app.route('/cc', methods=['Get'])
 def cc():
-    return os.environ.get('GDCLIENT', None)
+    vv = os.environ.get('GDCLIENT', None)
+    return json.loads(vv)
 
 if __name__ == '__main__':
     app.run(debug=True)

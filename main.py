@@ -23,5 +23,9 @@ def query_products():
     service = gd.get_drive_service2()
     return gd.fetch_product_data(service, FID)
 
+@app.route('/cc', methods=['Get'])
+def cc():
+    return os.environ.get('GDCLIENT', None)
+
 if __name__ == '__main__':
     app.run(debug=True)

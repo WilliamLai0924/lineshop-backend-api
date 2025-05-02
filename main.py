@@ -24,5 +24,4 @@ def query_products():
     return gd.fetch_product_data(service, FID)
 
 if __name__ == '__main__':
-    query_products()
     app.run(debug=True)

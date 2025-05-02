@@ -31,10 +31,11 @@ def get_drive_service2():
     client = os.environ.get('GDCLIENT', None)
     if client is None:
         client = 'gdrive-client.json'
-
-    client = json.loads(client)
-    creds = service_account.Credentials.from_service_account_file(
-        client, scopes=SCOPES)
+        creds = service_account.Credentials.from_service_account_file(
+            client, scopes=SCOPES)
+    else:
+        client = json.loads(client)
+        creds = service_account.Credentials.from_service_account_info(client, scopes=SCOPES)
     return build('drive', 'v3', credentials=creds)
 
 def list_product_folders(service, parent_folder_id):
